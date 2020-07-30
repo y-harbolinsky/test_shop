@@ -1,0 +1,42 @@
+<div>
+    <h2>Shopping cart</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($products as $product) : ?>
+                <tr>
+                    <td><b><?= htmlspecialchars($product['title']) ?></b></td>
+                    <td><?= htmlspecialchars($product['quantity']) ?></td>
+                    <td>$<?= htmlspecialchars($product['price']) ?></td>
+                    <td>$<?= htmlspecialchars($product['totalPrice']) ?></td>
+                    <td>
+                        <button data-id="<?= htmlspecialchars($product['id']) ?>" class="remove-button">Remove</button>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            <tr>
+                <td colspan="4"></td>
+                <td colspan="1"><b>Total: <span id="total-sum"><?= $totalSum; ?></span></b></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <span>Shipping:</span>
+                    <input type="radio" id="pick_up" value="pick_up" name="shipping">
+                    <label for="pick_up">Pick up</label>
+                    <input type="radio" id="ups" value="ups" name="shipping">
+                    <label for="ups">UPS ($5)</label>
+                    <span id="shipping-error" class="error">Please select shipping option!</span>
+                </td>
+                <td colspan="1"><button id="pay-button">Pay</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

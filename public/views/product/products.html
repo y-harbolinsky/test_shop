@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="<?= '../../public/css/style.css'; ?>">
+    <script type="text/javascript" src="<?= '../../public/js/index.js'; ?>"></script>
+</head>
+<body>
+    <div class="wrapper">
+    <!--<h1>Products</h1>-->
+
+    <div>
+        <?php foreach ($data['products'] as $product) : ?>
+            <div class="product">
+                <img src="<?= '/public/images/product.jpg'; ?>" alt="Denim Jeans" style="width:100%">
+                <h3 data-title="<?= htmlspecialchars($product->getTitle()) ?>">
+                    <?= htmlspecialchars($product->getTitle()) ?>
+                    <!--<span class="quantity">(<?= htmlspecialchars($product->getQuantity()) ?>)</span>-->
+                </h3>
+                <p class="price" data-price="<?= htmlspecialchars($product->getPrice()) ?>">
+                    $<?= htmlspecialchars($product->getPrice()) ?>
+                </p>
+                <p><?= htmlspecialchars($product->getDescription()) ?></p>
+                <p>
+                    Rating (avg): <b><?= htmlspecialchars($product->getRating()) ?></b>
+                </p>
+                <p>
+                    <div class="rating">
+                        <?php $rating = round($product->getRating()); ?>
+
+                        <input type="radio" id="star5_<?= htmlspecialchars($product->getId()) ?>" name="rating" value="5" <?php if ($rating == 5): ?>checked="checked"<?php endif ?> />
+                        <label for="star5_<?= htmlspecialchars($product->getId()) ?>"></label>
+                        <input type="radio" id="star4_<?= htmlspecialchars($product->getId()) ?>" name="rating" value="4" <?php if ($rating == 4): ?>checked="checked"<?php endif ?> />
+                        <label for="star4_<?= htmlspecialchars($product->getId()) ?>"></label>
+                        <input type="radio" id="star3_<?= htmlspecialchars($product->getId()) ?>" name="rating" value="3" <?php if ($rating == 3): ?>checked="checked"<?php endif ?> />
+                        <label for="star3_<?= htmlspecialchars($product->getId()) ?>"></label>
+                        <input type="radio" id="star2_<?= htmlspecialchars($product->getId()) ?>" name="rating" value="2" <?php if ($rating == 2): ?>checked="checked"<?php endif ?> />
+                        <label for="star2_<?= htmlspecialchars($product->getId()) ?>"></label>
+                        <input type="radio" id="star1_<?= htmlspecialchars($product->getId()) ?>" name="rating" value="1" <?php if ($rating == 1): ?>checked="checked"<?php endif ?> />
+                        <label for="star1_<?= htmlspecialchars($product->getId()) ?>"></label>
+                    </div>
+                </p>
+                <p><input type="number" name="quantity" value="1" min="1" max="100"></p>
+                <input type="hidden" data-id="<?= htmlspecialchars($product->getId()) ?>">
+                <p><button class="add-button">Add to Cart</button></p>
+            </div>
+        <?php endforeach ?>
+    </div>
+
+        <div class="cart-container" id="shopping-cart">
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright 2019 YH</p>
+    </footer>
+</body>
+</html>

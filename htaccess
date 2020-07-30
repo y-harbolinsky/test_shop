@@ -1,0 +1,40 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+#Options -Indexes
+#DirectoryIndex index.php
+#DefaultLanguage en-US
+#AddDefaultCharset UTF-8
+#ServerSignature Off
+
+##RewriteEngine On
+##RewriteBase /
+##RewriteRule . /index.php [L]
+
+#RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+#RewriteRule ^ %1 [L,NE,R=302]
+
+#RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+
+#RewriteCond %{THE_REQUEST} ^(GET|HEAD)\s([^.]+)\.php [NC]
+#RewriteRule ^ %2 [R,NC]
+#RewriteCond %{REQUEST_FILENAME}.php -f
+#RewriteRule ^ %{REQUEST_URI}.php
+
+#####
+#RewriteEngine On
+#RewriteRule ^$ /index.php [L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} !^/public/
+#RewriteRule ^(.*)$ /index.php$1
+
+# Add trailing slash to directories within live
+# This does not expose the internal URL.
+#RewriteCond %{SCRIPT_FILENAME} -d
+#RewriteRule ^public/(.*[^/])$ http://testshopcart.zzz.com.ua/$1/ [R=301]

@@ -1,0 +1,13 @@
+<div>
+    <?php if ($paymentStatus === 'success'): ?>
+        <h2 class="success">Payment success!</h2>
+        <p>Previous balance: $<?= $balance; ?></p>
+        <p>Total purchase cost: $<?= $lastPurchase; ?></p>
+        <p>Remaining balance: $<?= $remainingBalance; ?></p>
+    <?php else: ?>
+        <h2 class="error">Payment failure! You do not have enough funds in your account!</h2>
+        <h4>Please adjust your purchase!</h4>
+        <p>Your current balance: $<?= $balance; ?> </p>
+        <p>Your total purchase: $<?= $totalSum; ?> </p>
+    <?php endif; ?>
+</div>
